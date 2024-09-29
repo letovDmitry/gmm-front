@@ -1,0 +1,79 @@
+@import '../../../scss/colors.scss';
+@import '../../../scss/typhography.scss';
+
+.accordion {
+  background-color: #1C232D;
+  border-radius: 8px;
+  max-width: 1080px;
+  padding: 2px;
+  transition: all .4s ease;
+  &:not(:first-child) {
+    margin-top: 10px;
+  }
+  &.open {
+    background-color: #222B39;
+    color: #E6E6F8;
+  }
+  &:hover {
+    background-color: #364152;
+    color: #E6E6F8;
+  }
+  .arr {
+    transition: transform .4s ease;
+  }
+  .add {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex: 1 1 auto;
+    &.rotated {
+      .arr {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .btn {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding:10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    font-family: $fontFamily;
+    text-align: left;
+    cursor: pointer;
+    min-height: 64px;
+
+    @media (max-width: 480px) {
+      max-width: none;
+    }
+ 
+  }
+
+  .content {
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+
+    
+    &.contentOpen {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .answer {
+    padding: 10px 20px 20px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 140%;
+    font-family: $fontFamily;
+  }
+}

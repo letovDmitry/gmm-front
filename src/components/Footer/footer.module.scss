@@ -1,0 +1,128 @@
+@import '../../../scss/colors.scss';
+
+.footer {
+
+}
+
+.body {
+    border-top: 1px solid #303843;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    @media (max-width: 600px){
+        flex-wrap: nowrap;
+    }
+    @media (max-width: 768px) {
+        border: none;
+    }
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    @media (max-width: 600px){
+        // flex-wrap: wrap;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+.link {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap:8px;
+    transition: all .4s ease;
+    &:hover {
+        color: $primaryTextHover;
+        .icon {
+            fill: $primaryTextHover;
+        }
+    }
+    @media (max-width: 600px){
+        // width: 50%;
+        align-items: start;
+    }
+}
+
+.copy {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: 768px){
+        flex-wrap: wrap!important;
+    }
+    @media (max-width: 600px){
+        display: none;
+    }
+}
+
+.mobileCopy {
+    display: none;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: 600px){
+        display: flex;
+        padding: 35px 10px 20px 10px;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #303843;
+    }
+}
+
+.rights {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+    @media (max-width: 768px){
+        width: 100%;
+    }
+    @media (max-width: 600px) {
+        text-align: center;
+    }
+    @media (max-width: 360px) {
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
+.icons {
+    display: flex;
+    gap: 12px;
+    a {
+        transition: all .4s ease;
+        &:hover {
+            color: $primaryTextHover;
+            .icon {
+                fill: $primaryTextHover;
+            }
+        }
+    }
+    @media (max-width: 600px){
+        display: none;
+    }
+}
+
+.mobileIcons {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    a {
+        transition: all .4s ease;
+        &:hover {
+            color: $primaryTextHover;
+            .icon {
+                fill: $primaryTextHover;
+            }
+        }
+    }
+    @media (max-width: 600px){
+        display: flex;
+    }
+}

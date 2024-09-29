@@ -1,0 +1,163 @@
+@use 'sass:math';
+@import './mixins';
+@import './colors';
+@import './normalize';
+@import './typhography';
+@import './breakpoints';
+
+@if ($responsiveType==1) {
+  [class*='container'] {
+    @if ($maxWidthContainer>0) {
+      max-width: rem($maxWidthContainer);
+      box-sizing: content-box;
+      margin: 0 auto;
+    }
+    @if ($containerPadding>0) {
+      padding: 0 rem(math.div($containerPadding, 2));
+    }
+  }
+} @else {
+  [class*='__container'] {
+    margin: 0 auto;
+    @if ($maxWidthContainer>0) {
+      max-width: rem($maxWidthContainer);
+      box-sizing: content-box;
+    } @else {
+      @if ($containerPadding>0) {
+        padding: 0 rem(math.div($containerPadding, 2));
+      }
+    }
+    @media (max-width: $pc) {
+      max-width: rem(970);
+    }
+    @media (max-width: $tablet) {
+      max-width: rem(750);
+    }
+    @media (max-width: $mobile) {
+      max-width: none;
+      @if ($containerPadding>0 and $maxWidthContainer>0) {
+        padding: 0 rem(math.div($containerPadding, 2));
+      }
+    }
+  }
+}
+
+.arrow {
+  display: none!important;
+}
+
+
+body {
+  font-weight: 500;
+  background: #161C23;
+  font-family: $fontFamily;
+  color: $primaryText;
+  .lock & {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+.react-tabs {
+  display: flex;
+  gap: 12px;
+  @media (max-width: 800px) {
+    flex-wrap: wrap;
+  }
+}
+
+.react-tabs__tab-list {
+  @media (max-width: 800px) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.react-tabs__tab {
+  display: flex;
+  align-items: center;
+  background-color: #1C232D;
+  padding: 37px!important;
+  width: 345px;
+  min-height: 120px;
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 30px;
+    
+  }
+  @media (max-width: 550px) {
+    padding: 10px!important;
+  }
+  border-radius: 12px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all .4s ease;
+  &:hover {
+    border: 3px solid $primaryTextHover;
+    .icon {
+      color: $primaryTextHover;
+    }
+    .header {
+      color: $primaryTextHover;
+    }
+  }
+  &:not(:first-child){
+    margin-top: 10px;
+    @media (max-width: 800px) {
+      margin-top: 0;
+    }
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+.header {
+  margin-left: 25px;
+  line-height: 20px;
+  max-width: 137px;
+  font-size: 15px;
+  font-weight: 700;
+  @media (max-width: 480px) {
+    max-width: none;
+  }
+}
+.icon,.header {
+  transition: all .4s ease;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+
+
+// wrapper ============================================================================================================================================================================================================================================================================================================================================================================================================================================
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  > main {
+    flex: 1 1 auto;
+  }
+  > * {
+    min-width: 0;
+  }
+}
+
+
+

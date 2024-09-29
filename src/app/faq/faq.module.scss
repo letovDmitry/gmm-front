@@ -1,0 +1,23 @@
+.tabs {
+    margin-top: 34px;
+}
+
+.heading {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+// .tabTitle {
+//     max-width: 165px;
+// }
+
+.iconFaq {
+    // flex-shrink: 0;
+    width: max-content;
+}

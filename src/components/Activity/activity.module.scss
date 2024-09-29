@@ -1,0 +1,209 @@
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
+
+.activity {
+    width: 100%;
+    @media (max-width: 1200px) {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    z-index: 500;
+}
+
+.title {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: 1200px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.count {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    span {
+        color: #E6E6F8;
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 14px;
+    }
+}
+
+.body {
+    margin-top: 25px;
+    @media (max-width: 1200px) {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        margin-top: 0;
+    }
+}
+
+.item {
+    background-color: #1C232D;
+    display: flex;
+    border-radius: 12px;
+    width: 100%;
+    &:first-child {
+        box-shadow: 0px 0px 30px 0px #222B39;
+        background-color: #222B39;
+        .clockIcon {
+            color: $primaryTextHover;
+        }
+        .time {
+            span {
+                color: #E6E6F8;
+            }
+        }
+        .cost {
+            color: #E6E6F8;
+        }
+    }
+    &:not(:first-child) {
+        margin-top: 12px;
+    }
+    transition: all .4s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: #222B39;
+        .cost {
+            color: #E6E6F8;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+    @media (max-width: 1200px)  {
+        min-width: 288px;
+        &:not(:first-child) {
+            margin-top: 0px;
+        }
+        &:first-child {
+            box-shadow: 0px 0px 0px 0px #222B39;
+        }
+        @media (max-width: 500px) {
+            min-width: 215px;
+        }
+    }
+}
+.clockIcon {
+    color: $primaryText;
+}
+
+.cost {
+    transition: all .4s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.description {
+    width: inherit;
+    padding: 10px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 23px 11px 13px;
+}
+.inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.time {
+    display: flex;
+    align-self: center;
+    span {
+        margin-left: 5px;
+    }
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.animate {
+    position: relative;
+}
+
+.name {
+    color: #E6E6F8;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pulsatingCircle {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+  
+    &:before {
+      content: "";
+      position: relative;
+      display: block;
+      width: 300%;
+      height: 300%;
+      box-sizing: border-box;
+      margin-left: -100%;
+      margin-top: -100%;
+      border-radius: 45px;
+      background-color: #3ae19b;
+      animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+  
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #3ae19b;
+      border-radius: 15px;
+      box-shadow: 0 0 8px #0000004d;
+      animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

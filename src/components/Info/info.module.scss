@@ -1,0 +1,243 @@
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/typhography.scss';
+
+.info {
+    margin-top: -70px;
+    @media (max-width: 1200px) {
+        display: none;
+    }
+}
+
+.body {
+
+}
+
+.steam {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 1.2%;
+}
+
+.infoBlock {
+    margin-top: 30px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 1.2%;
+    color: $primaryGreen;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 1.2%;
+}
+
+.icon {
+    transition: all .4s ease;
+    &:hover {
+        filter: drop-shadow(0 0 35px rgba(54, 65, 82, 0.5));    
+          
+    }
+}
+.iconLike {
+    margin-right: 10px;
+}
+.ways {
+    margin-left: 52px;
+    margin-top: 45px;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+}
+
+.mainWays {
+    margin-left: 52px;
+    // margin-top: 55px;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+}
+
+.wayList {
+    margin-left: 75px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.items {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-top: 45px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+}
+
+.mainService {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-top: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+}
+
+.description {
+    margin-left: 52px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 55px;
+}
+
+.descTitle{
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 17px;
+    color: $redText;
+    margin-left: 147px;
+}
+
+.descTitleYellow {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 17px;
+    color: $yellowText;
+    margin-left: 147px;
+}
+
+.descText {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.descIcon {
+    margin-top: 20px;
+    transition: all .4s ease;
+    &:hover {
+        filter: drop-shadow(0 0 35px rgba(54, 65, 82, 0.5));    
+          
+    }
+}
+
+.descWrap {
+    gap: 71px;
+    display: flex;
+}
+
+.greenBlock {
+    margin-top: 55px;
+    background-color: $primaryGreen;
+    border-radius: 12px;
+
+    box-shadow: 0px 30px 70px -5px rgba(0, 168, 108, 0.3);
+
+}
+
+.inner {
+    padding: 35px 45px 35px 30px;
+    display: flex;
+    align-items: center;
+}
+.greenBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.greenText {
+    margin-left: 19px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 1.2%;
+    font-family: $fontFamily;
+    color: #E6E6F8;
+    span {
+        font-weight: 900;
+        color: $primaryTextHover;
+        font-family: $fontFamily;
+    }
+
+}
+
+.btn {
+    a {
+        // padding: 23px 41px 10px 23px;
+        padding-right:22px;
+        width: 208px;
+        height: 55px;
+        display: flex;
+        color: #e6e6e6;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        background-color: $primaryTextHover;
+        box-shadow: 0px 0px 20px 0px #E7BB0B;
+        transition: all .4s ease;
+        &:hover {
+            box-shadow: none;
+        }
+        font-family: $fontFamily!important;
+    }
+}
+
+.clickIcon {
+    margin-right: 20px;
+}
+
+.collaborating {
+    margin-top: 52px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reputation {
+    margin-top: 75px;
+    margin-left: 52px;
+    display: flex;
+    align-items: center;  
+    gap: 55px;
+}
+
+.repTitle {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 17px;
+    color: $primaryTextHover;
+}
+.repText {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    max-width: 1250px;
+}
+
+.tinkIcon {
+    flex-shrink: 0;
+}

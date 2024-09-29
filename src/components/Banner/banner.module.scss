@@ -1,0 +1,157 @@
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/typhography.scss';
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.yellowBanner {
+    width: 450px;
+    height: 555px;
+    background: linear-gradient(0deg, #1D190A 0%, #FFCD05 100%);
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.info {
+   display: flex;
+   justify-content: space-between;
+   width: 355px;
+}
+
+.replenish {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.users {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.repItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bookImg {
+    margin-top: 50px;
+}
+
+.name {
+    color: #BAAF85;
+    font-size: 13px;
+    line-height: 129%;
+    font-weight: 400;
+}
+
+.line {
+    width: 1px;
+    height: 46px;
+    background-color: #715C09;
+}
+
+.count {
+    color: #E6E6F8;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+}
+
+.desc {
+    font-weight: 500;
+    font-size: 14px;
+    color: #787995;
+    margin-top: 5px;
+}
+
+.lisence {
+    font-weight: 500;
+    font-size: 10px;
+    color: #787995;
+}
+
+.rSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.blueBanner {
+    background-image: url('../../../public/banner/bg.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 500;
+    border-radius: 22px;
+}
+
+.inner {
+    padding: 25px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 1400px) {
+        gap: 12px;
+        padding: 29px 27px;
+    }
+
+}
+
+@media (max-width: 1005px) {
+    .banner {
+        width: 100%;
+    }
+    .body {
+        width: 100%;
+    }
+
+    .yellowBanner {
+        display: none;
+    }
+
+    .info {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .blueBanner {
+        width: 100%;
+    }
+
+    .inner {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .bookImg {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        display: none;
+    }
+}

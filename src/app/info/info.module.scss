@@ -1,0 +1,77 @@
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/typhography.scss';
+
+.tabs {
+    margin-top: 34px;
+}
+
+.heading {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+// .tabTitle {
+//     max-width: 165px;
+// }
+
+.iconFaq {
+    // flex-shrink: 0;
+    width: max-content;
+}
+
+.policy {
+    padding: 23px 25px;
+    background-color: #1C232D;
+    border-radius: 12px;
+}
+
+.policyTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: $primaryTextHover;
+    &:not(:first-child) {
+        padding: 35px 0 23px 0;
+    }
+}
+.list {
+    margin-top: 26px;
+}
+
+.item {
+    display: flex;
+    gap: 5px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.number {
+    background-color: $primaryTextHover;
+    padding: 2px 5px 3px 3px;
+    height: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #202934;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    margin-top: -3px;
+    font-size: 14px;
+    color: #e6e6f5;
+    line-height: 140%;
+    font-weight: 700;
+}

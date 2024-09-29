@@ -1,0 +1,185 @@
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/typhography.scss';
+
+.header {
+padding: 46px 0;
+
+@media (max-width: 480px) {
+    padding: 23px 0 18px 0;
+}
+
+}
+
+.authBtn {
+    background-color: $primaryTextHover;
+    cursor: pointer;
+    padding: 20px 34px;
+    border-radius: 12px;
+    @media (max-width: 768px) {
+        padding: 0;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    transition: all .4s ease;
+    &:hover {
+        box-shadow: 0px 0px 30px 0px rgba(231, 187, 11, 0.3);
+    }
+}
+
+.logo {
+    @media (max-width: 480px) {
+        img {
+            width: 56px;
+            height: 30px;
+        }
+    }
+
+}
+
+.logoLink {
+    position: relative;
+    display: inline-block;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        bottom: -50px;
+        left: -20px;
+        right: -50px;
+    }
+}
+.authBody {
+    display: flex;
+    align-items: center;
+    svg {
+        margin-left: 12px;
+        @media (max-width: 768px) {
+            margin-left: 0;
+        }
+    }
+}
+
+.authText {
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    @media (max-width: 1200px){
+        gap: 35px;
+    }
+    @media (max-width: 400px) {
+        gap: 18px;
+    }
+}
+
+.list {
+    display: flex;
+    gap: 32px;
+    @media (max-width: 400px) {
+        gap: 12px;
+    }
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: $primaryText;
+    transition: fill .4s ease;
+    flex-shrink: 0;
+}
+
+.iconExit {
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    fill: $primaryText;
+    transition: fill .4s ease;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        color: $primaryTextHover;
+        
+        .icon {
+            fill: $secondaryHover!important;
+        }
+    }
+    transition: color .4s ease;
+}
+
+.text {
+    margin-left: 10px;
+    font-size: toRem(15);
+    font-weight: 700;
+    line-height: 106.666667%;
+    @media (max-width: 1200px){
+        display: none;
+    }
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    &:hover {
+        .name {
+            color: $secondaryHover;
+        }
+        .profileImg {
+            border-color: $secondaryHover;
+        }
+    }
+}
+
+.name {
+    transition: all .4s ease;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.profileImg {
+    border: 5px solid $primaryText;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    transition: all .4s ease;
+}
+
+.btnExit {
+    &:hover {
+        color: $redText;
+        .iconExit {
+            fill: $redText;
+        }
+    }
+
+    transition: all .4s ease;
+}

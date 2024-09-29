@@ -1,0 +1,124 @@
+@import '../../../scss/breakpoints.scss';
+@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/typhography.scss';
+
+.reviews {
+    margin-top: 55px;
+    margin-bottom: 55px;
+}
+
+.body {
+    display: flex;
+    gap: 12px;
+}
+.list {
+    border-radius: 12px;
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 10.5px 20px 10.5px 17px;
+        border-radius: 12px;
+        color: #E6E6F8;
+
+        &:nth-child(odd) {
+            background-color: #222B39;
+
+        }
+
+        &:nth-child(even) {
+            background-color: #1C232D;
+        }
+    }
+    transition: box-shadow .4s ease;
+    &:hover {
+        box-shadow: 5px 2px 0px 2px #364152;
+    }
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 17px;
+    span {
+        color: $primaryText;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 129%;
+        &:not(:last-child) {
+            margin-right: 2px;
+        }
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 129%;
+}
+
+.review {
+    padding: 0 15px 0 20px;
+    border-left: 2px solid #364152;
+    border-right: 2px solid #364152;
+    display: flex;
+    gap: 0px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 37px;
+}
+.revText {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+}
+
+.cost {
+    color: $primaryTextHover;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 129%;
+    min-width: 48px;
+    text-wrap: nowrap;
+}
+
+.rating {
+    padding-left: 32px;
+    display: flex;
+    gap: 20px;
+}
+
+.ratText {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 129%;
+}
+
+.banner {
+    width: 340px;
+    height: 620px;
+    background-color: #1C232D;
+    border-radius: 12px;
+    padding: 37px 35px;
+}
+
+.bannerImg {
+    text-align: center;
+    padding: 34px 0;
+}
+
+.bannerText {
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+}

@@ -47,7 +47,7 @@ const RegisterPopup = () => {
   const handleRegister = async (e: any) => {
     e.preventDefault();
     const { data } = await axios.post(
-      "http://localhost:8000/auth/signup",
+      "http://193.227.241.104:8000/auth/signup",
       !isChecked
         ? {
             email,

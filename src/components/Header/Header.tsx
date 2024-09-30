@@ -9,7 +9,7 @@ import QuestionIcon from "../../../public/header/ques.svg";
 import ReviewIcon from "../../../public/header/review.svg";
 import ExitIcon from "../../../public/header/exit.svg";
 import VkIcon from "../../../public/header/vk.svg";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 // import LoginPopup from '../LoginPopup/LoginPopup';
 // import ForgotPopup from '../ForgotPopup/ForgotPopup';
@@ -43,14 +43,14 @@ const Header = () => {
     }
   };
 
-  const searchParams = useSearchParams();
+  //   const searchParams = useSearchParams();
   console.log(session);
 
-  useEffect(() => {
-    if (searchParams.get("loginOpened") === "true") {
-      loginSetOpen(true);
-    }
-  }, [searchParams]);
+  //   useEffect(() => {
+  //     if (searchParams.get("loginOpened") === "true") {
+  //       loginSetOpen(true);
+  //     }
+  //   }, [searchParams]);
 
   return (
     <div className={styles.header}>

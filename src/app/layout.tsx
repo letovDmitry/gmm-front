@@ -38,11 +38,11 @@ export default function RootLayout({
           />
         </head>
         <body className={roboto.className}>
-          <AuthProvider>
-            <Header />
-            <main className="wrapper">{children}</main>
-            <Footer />
-          </AuthProvider>
+          {/* <AuthProvider> */}
+          <Header />
+          <main className="wrapper">{children}</main>
+          <Footer />
+          {/* </AuthProvider> */}
         </body>
       </html>
     </SessionProvider>

@@ -96,9 +96,9 @@ const handler = NextAuth({
       return session;
     },
   },
-  //   pages: {
-  //     signIn: "/profile?loginOpened=true",
-  //   },
+  pages: {
+    signIn: "/profile",
+  },
 });
 
 export { handler as GET, handler as POST };

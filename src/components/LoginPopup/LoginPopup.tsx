@@ -20,7 +20,6 @@ import {
   getProviders,
 } from "next-auth/react";
 import axios from "axios";
-import VkAuth from "../VKAuth/VKAuth";
 
 const code_verifier = "FGH767Gd65";
 const code_challenge = sha256(code_verifier);
@@ -143,7 +142,12 @@ const LoginPopup = () => {
               >
                 Войти
               </button>
-              <VkAuth />
+              <button
+                onClick={(e) => signIn("vk")}
+                className={styles.socialBtn}
+              >
+                <VkIcon width={26} height={15} />
+              </button>
               <LoginButton
                 botUsername={"sadjxjcvjxzucvu_bot"}
                 authCallbackUrl="/"

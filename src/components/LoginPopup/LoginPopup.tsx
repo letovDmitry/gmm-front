@@ -10,6 +10,7 @@ import ParamIcon from "../../../public/auth/params.svg";
 import Link from "next/link";
 import { useLoginPopupStore } from "@/shared/store/loginPopupStore";
 import { useRegisterPopupStore } from "@/shared/store/registerPopupStore";
+import { LoginButton } from "@telegram-auth/react";
 import sha256 from "crypto-js/sha256";
 import { useForgotPopupStore } from "@/shared/store/forgotPopupStore";
 import {
@@ -125,15 +126,23 @@ const LoginPopup = () => {
               >
                 Войти
               </button>
-              <button onClick={() => signIn("vk")} className={styles.socialBtn}>
-                <VkIcon width={26} height={15} />
-              </button>
               <button
-                onClick={() => signIn("telegram-login")}
+                onClick={(e) => {
+                  //   e.preventDefault();
+                  signIn("vk");
+                }}
                 className={styles.socialBtn}
               >
-                tg
+                <VkIcon width={26} height={15} />
               </button>
+              <LoginButton
+                botUsername={"sadjxjcvjxzucvu_bot"}
+                authCallbackUrl="/"
+                buttonSize="large" // "large" | "medium" | "small"
+                cornerRadius={5} // 0 - 20
+                showAvatar={true} // true | false
+                lang="en"
+              />
             </div>
             {/* <button
               onClick={(e) => {

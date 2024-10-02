@@ -152,7 +152,9 @@ const LoginPopup = () => {
               <VkAuth />
               <LoginButton
                 botUsername={"sadjxjcvjxzucvu_bot"}
-                authCallbackUrl="/"
+                onAuthCallback={(data) => {
+                  signIn("telegram-login", { callbackUrl: "/" }, data as any);
+                }}
                 buttonSize="small" // "large" | "medium" | "small"
                 cornerRadius={5} // 0 - 20
                 showAvatar={true} // true | false

@@ -2,7 +2,7 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { getCsrfToken } from "next-auth/react";
+import { getCsrfToken, signIn } from "next-auth/react";
 import VkIcon from "../../../public/auth/vk.svg";
 
 export default function VkAuth({
@@ -16,7 +16,7 @@ export default function VkAuth({
         name="callbackUrl"
         value="https://teamproject.site/api/auth/callback/vk"
       />
-      <button type="submit">
+      <button onClick={() => signIn("vk")}>
         <VkIcon width={26} height={15} />
       </button>
     </form>

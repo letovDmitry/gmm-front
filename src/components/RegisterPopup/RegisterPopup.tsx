@@ -47,7 +47,7 @@ const RegisterPopup = () => {
   const handleRegister = async (e: any) => {
     // e.preventDefault();
     const { data } = await axios.post(
-      "http://194.58.126.25:8000/auth/signup",
+      "https://teamproject.site/app/auth/signup",
       !isChecked
         ? {
             email,

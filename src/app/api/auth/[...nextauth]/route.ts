@@ -27,7 +27,7 @@ const handler = NextAuth({
       async authorize(credentials, req) {
         console.log("sdf");
         const { email, password } = credentials as any;
-        const res = await fetch("http://194.58.126.25:8000/auth/signin", {
+        const res = await fetch("https://teamproject.site/app/auth/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -77,7 +77,7 @@ const LoginPopup = () => {
     const response = await axios.post(
       "https://teamproject.site/api/auth/signin/vk",
       {
-        callbackUrl: "https://teamproject.site",
+        callbackUrl: "https://teamproject.site/api/auth/callback/vk",
         csrfToken: csrf,
       }
     );

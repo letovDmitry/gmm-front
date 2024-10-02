@@ -72,7 +72,7 @@ const LoginPopup = () => {
   getProviders().then((p) => console.log(p));
 
   const handleLoginVk = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const csrf = await getCsrfToken();
     const response = await axios.post("https://teamproject.site/api/auth/vk", {
       callbackUrl: "https://teamproject.site",
@@ -80,7 +80,7 @@ const LoginPopup = () => {
     });
     console.log(response);
 
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleLogin = async (e: any) => {
@@ -140,7 +140,7 @@ const LoginPopup = () => {
                 Войти
               </button>
               <button
-                onClick={(e) => handleLoginVk()}
+                onClick={(e) => handleLoginVk(e)}
                 className={styles.socialBtn}
               >
                 <VkIcon width={26} height={15} />

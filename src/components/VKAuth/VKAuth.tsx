@@ -9,7 +9,7 @@ export default function VkAuth({
   csrfToken,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <form action="https://teamproject.site/api/auth/signin/vk" method="POST">
+    <form action="https://teamproject.site/api/auth/callback/vk" method="POST">
       <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
       <input
         type="hidden"

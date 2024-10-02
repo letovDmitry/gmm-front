@@ -12,7 +12,6 @@ import { useLoginPopupStore } from "@/shared/store/loginPopupStore";
 import { useRegisterPopupStore } from "@/shared/store/registerPopupStore";
 import { LoginButton } from "@telegram-auth/react";
 import sha256 from "crypto-js/sha256";
-import { getCsrfToken } from "next-auth/react";
 import { useForgotPopupStore } from "@/shared/store/forgotPopupStore";
 import {
   getCsrfToken,

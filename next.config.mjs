@@ -1,5 +1,8 @@
 // next.config.mjs
 const nextConfig = {
+  images: {
+    domains: ["t.me", "cdn4.cdn-telegram.org", "sun1-24.userapi.com"],
+  },
   output: "standalone",
   webpack(config) {
     config.module.rules.push({

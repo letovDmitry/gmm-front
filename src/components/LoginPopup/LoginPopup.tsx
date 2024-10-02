@@ -74,10 +74,13 @@ const LoginPopup = () => {
   const handleLoginVk = async (e) => {
     e.preventDefault();
     const csrf = await getCsrfToken();
-    const response = await axios.post("https://teamproject.site/api/auth/vk", {
-      callbackUrl: "https://teamproject.site",
-      csrfToken: csrf,
-    });
+    const response = await axios.post(
+      "https://teamproject.site/api/auth/signin/vk",
+      {
+        callbackUrl: "https://teamproject.site",
+        csrfToken: csrf,
+      }
+    );
     console.log(response);
 
     // window.location.reload();

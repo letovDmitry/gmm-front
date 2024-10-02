@@ -45,7 +45,7 @@ const RegisterPopup = () => {
   //     location.reload()
   // }
   const handleRegister = async (e: any) => {
-    // e.preventDefault();
+    e.preventDefault();
     const { data } = await axios.post(
       "https://teamproject.site/app/auth/signup",
       !isChecked

@@ -88,7 +88,7 @@ const LoginPopup = () => {
   //   };
 
   const handleLogin = async (e: any) => {
-    e.preventDefault();
+    // e.preventDefault();
     const response = await signIn("credentials", {
       redirect: false,
       email: email,
@@ -96,7 +96,9 @@ const LoginPopup = () => {
     });
     console.log(response);
 
-    window.location.reload();
+    if (response?.ok) {
+      window.location.reload();
+    }
   };
 
   return (

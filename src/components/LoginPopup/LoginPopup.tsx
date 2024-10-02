@@ -20,6 +20,7 @@ import {
   getProviders,
 } from "next-auth/react";
 import axios from "axios";
+import VkAuth from "../VKAuth/VKAuth";
 
 const code_verifier = "FGH767Gd65";
 const code_challenge = sha256(code_verifier);
@@ -71,20 +72,20 @@ const LoginPopup = () => {
 
   getProviders().then((p) => console.log(p));
 
-  const handleLoginVk = async (e) => {
-    e.preventDefault();
-    const csrf = await getCsrfToken();
-    const response = await axios.post(
-      "https://teamproject.site/api/auth/signin/vk",
-      {
-        callbackUrl: "https://teamproject.site/api/auth/callback/vk",
-        csrfToken: csrf,
-      }
-    );
-    console.log(response);
+  //   const handleLoginVk = async (e) => {
+  //     e.preventDefault();
+  //     const csrf = await getCsrfToken();
+  //     const response = await axios.post(
+  //       "https://teamproject.site/api/auth/signin/vk",
+  //       {
+  //         callbackUrl: "https://teamproject.site/api/auth/callback/vk",
+  //         csrfToken: csrf,
+  //       }
+  //     );
+  //     console.log(response);
 
-    // window.location.reload();
-  };
+  //     // window.location.reload();
+  //   };
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -142,12 +143,7 @@ const LoginPopup = () => {
               >
                 Войти
               </button>
-              <button
-                onClick={(e) => handleLoginVk(e)}
-                className={styles.socialBtn}
-              >
-                <VkIcon width={26} height={15} />
-              </button>
+              <VkAuth />
               <LoginButton
                 botUsername={"sadjxjcvjxzucvu_bot"}
                 authCallbackUrl="/"

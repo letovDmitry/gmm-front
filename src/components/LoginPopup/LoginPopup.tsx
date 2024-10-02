@@ -125,10 +125,13 @@ const LoginPopup = () => {
               >
                 Войти
               </button>
-              <button onClick={() => signIn()} className={styles.socialBtn}>
+              <button onClick={() => signIn("vk")} className={styles.socialBtn}>
                 <VkIcon width={26} height={15} />
               </button>
-              <button onClick={() => signIn()} className={styles.socialBtn}>
+              <button
+                onClick={() => signIn("telegram-login")}
+                className={styles.socialBtn}
+              >
                 tg
               </button>
             </div>

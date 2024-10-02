@@ -12,6 +12,7 @@ import { useLoginPopupStore } from "@/shared/store/loginPopupStore";
 import { useRegisterPopupStore } from "@/shared/store/registerPopupStore";
 import { LoginButton } from "@telegram-auth/react";
 import sha256 from "crypto-js/sha256";
+import { getCsrfToken } from "next-auth/react";
 import { useForgotPopupStore } from "@/shared/store/forgotPopupStore";
 import {
   getCsrfToken,
@@ -19,6 +20,7 @@ import {
   signIn,
   getProviders,
 } from "next-auth/react";
+import axios from "axios";
 
 const code_verifier = "FGH767Gd65";
 const code_challenge = sha256(code_verifier);
@@ -69,6 +71,18 @@ const LoginPopup = () => {
   getCsrfToken().then((c) => console.log(c));
 
   getProviders().then((p) => console.log(p));
+
+  const handleLoginVk = async (e) => {
+    // e.preventDefault();
+    const csrf = await getCsrfToken();
+    const response = await axios.post("https://teamproject.site/api/auth/vk", {
+      callbackUrl: "https://teamproject.site",
+      csrfToken: csrf,
+    });
+    console.log(response);
+
+    window.location.reload();
+  };
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -127,10 +141,7 @@ const LoginPopup = () => {
                 Войти
               </button>
               <button
-                onClick={(e) => {
-                  //   e.preventDefault();
-                  signIn("vk");
-                }}
+                onClick={(e) => handleLoginVk()}
                 className={styles.socialBtn}
               >
                 <VkIcon width={26} height={15} />
@@ -138,7 +149,7 @@ const LoginPopup = () => {
               <LoginButton
                 botUsername={"sadjxjcvjxzucvu_bot"}
                 authCallbackUrl="/"
-                buttonSize="large" // "large" | "medium" | "small"
+                buttonSize="small" // "large" | "medium" | "small"
                 cornerRadius={5} // 0 - 20
                 showAvatar={true} // true | false
                 lang="en"

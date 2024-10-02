@@ -35,7 +35,7 @@ const page = () => {
             <div className={styles.account}>
               <div className={styles.image}>
                 <Image
-                  src={session?.user?.avatar || "/header/profile.jpg"}
+                  src={session?.user?.picture || "/header/profile.jpg"}
                   width={76}
                   height={76}
                   alt="пользователь"

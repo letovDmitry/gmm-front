@@ -4,8 +4,8 @@ import Info from "@/components/Info/Info";
 export default function Home() {
   return (
     <>
-      <HeroBlock />
-      <Info />
+      {/* <HeroBlock />
+      <Info /> */}
     </>
   );
 }

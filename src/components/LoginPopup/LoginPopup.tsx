@@ -88,14 +88,14 @@ const LoginPopup = () => {
   //   };
 
   const handleLogin = async (e: any) => {
-    // e.preventDefault();
+    e.preventDefault();
     signIn("credentials", {
       redirect: false,
       email: email,
       password: password,
     }).then(({ ok, error }) => {
       if (ok) {
-        window.location.reload();
+        // window.location.reload();
       } else {
         console.log(error);
       }

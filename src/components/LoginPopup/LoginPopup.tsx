@@ -96,7 +96,7 @@ const LoginPopup = () => {
     }).then(({ ok, error }) => {
       console.log(ok, error);
       if (ok) {
-        // window.location.reload();
+        window.location.reload();
       } else {
         console.log(error);
       }

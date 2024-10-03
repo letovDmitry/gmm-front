@@ -87,7 +87,9 @@ const RegisterPopup = () => {
               email,
             }
       )
-      .then(() => window.location.reload())
+      .then(() => {
+        setIsSuccess(true);
+      })
       .catch((e) => {
         console.error(e);
         setIsError(true);
@@ -104,6 +106,7 @@ const RegisterPopup = () => {
             onClick={() => setRegisterPopup(false)}
           />
           {isError && <div className={styles.error}>Ошибка</div>}
+          {isSuccess && <div className={styles.success}>Успешно</div>}
 
           <h2 className={styles.title}>Добро пожаловать,</h2>
           <div className={styles.subtitle}>Укажите вашу почту</div>
@@ -117,6 +120,7 @@ const RegisterPopup = () => {
                 onChange={(e) => {
                   setEmail(e.currentTarget.value);
                   setIsError(false);
+                  setIsSuccess(false);
                 }}
                 className={styles.input}
               />
@@ -131,6 +135,7 @@ const RegisterPopup = () => {
                 onChange={(e) => {
                   setPassword(e.currentTarget.value);
                   setIsError(false);
+                  setIsSuccess(false);
                 }}
                 className={styles.input}
               />

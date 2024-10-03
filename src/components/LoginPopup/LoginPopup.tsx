@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import styles from "./login.module.scss";
 import MailIcon from "../../../public/auth/mail.svg";
 import CloseIcon from "../../../public/auth/close.svg";
@@ -21,6 +21,7 @@ import {
 } from "next-auth/react";
 import axios from "axios";
 import VkAuth from "../VKAuth/VKAuth";
+import SocialButtons from "../SocialButtons/SocialButtons";
 
 const code_verifier = "FGH767Gd65";
 const code_challenge = sha256(code_verifier);
@@ -35,6 +36,7 @@ const LoginPopup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const goToRegister = () => {
     setIsOpen(false);
     setRegisterPopup(true);
@@ -43,6 +45,32 @@ const LoginPopup = () => {
     setIsOpen(false);
     setForgotPopup(true);
   };
+
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setIsOpen]);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   useEffect(() => {
     // VKID.Config.init({
@@ -99,6 +127,7 @@ const LoginPopup = () => {
         window.location.reload();
       } else {
         console.log(error);
+        setIsError(true);
       }
     });
   };
@@ -106,15 +135,13 @@ const LoginPopup = () => {
   return (
     <>
       <div className={styles.overlay}></div> {/* Overlay */}
-      <div className={styles.login}>
+      <div className={styles.login} ref={popupRef}>
         <div className={styles.body}>
           <CloseIcon
             className={styles.closeIcon}
             onClick={() => setIsOpen(false)}
           />
-          {isSuccess && (
-            <div className={styles.successs}>Успешно авторизован</div>
-          )}
+          {isError && <div className={styles.error}>Ошибка</div>}
           <h2 className={styles.title}>Добро пожаловать,</h2>
           <div className={styles.subtitle}>Войдите в свой аккаунт</div>
           <form className={styles.form}>
@@ -124,7 +151,10 @@ const LoginPopup = () => {
                 placeholder="Почта..."
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
+                onChange={(e) => {
+                  setEmail(e.currentTarget.value);
+                  setIsError(true);
+                }}
                 className={styles.input}
               />
               <MailIcon className={styles.mailIcon} />
@@ -135,7 +165,10 @@ const LoginPopup = () => {
                 placeholder="Пароль..."
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.currentTarget.value)}
+                onChange={(e) => {
+                  setPassword(e.currentTarget.value);
+                  setIsError(true);
+                }}
                 className={styles.input}
               />
               <KeyIcon className={styles.keyIcon} />
@@ -153,21 +186,7 @@ const LoginPopup = () => {
               >
                 <VkIcon width={26} height={15} />
               </button> */}
-              <VkAuth />
-              <LoginButton
-                botUsername={"sadjxjcvjxzucvu_bot"}
-                onAuthCallback={(data) => {
-                  signIn(
-                    "telegram-login",
-                    { callbackUrl: "/profile" },
-                    data as any
-                  );
-                }}
-                buttonSize="small" // "large" | "medium" | "small"
-                cornerRadius={5} // 0 - 20
-                showAvatar={true} // true | false
-                lang="en"
-              />
+              <SocialButtons />
             </div>
             {/* <button
               onClick={(e) => {

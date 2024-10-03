@@ -132,6 +132,8 @@ const LoginPopup = () => {
     });
   };
 
+  console.log(isError);
+
   return (
     <>
       <div className={styles.overlay}></div> {/* Overlay */}
@@ -153,7 +155,7 @@ const LoginPopup = () => {
                 value={email}
                 onChange={(e) => {
                   setEmail(e.currentTarget.value);
-                  setIsError(true);
+                  setIsError(false);
                 }}
                 className={styles.input}
               />
@@ -167,7 +169,7 @@ const LoginPopup = () => {
                 value={password}
                 onChange={(e) => {
                   setPassword(e.currentTarget.value);
-                  setIsError(true);
+                  setIsError(false);
                 }}
                 className={styles.input}
               />

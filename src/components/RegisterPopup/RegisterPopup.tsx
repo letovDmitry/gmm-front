@@ -46,17 +46,20 @@ const RegisterPopup = () => {
   // }
   const handleRegister = async (e: any) => {
     e.preventDefault();
-    const { data } = await axios.post(
-      "https://teamproject.site/app/auth/signup",
-      !isChecked
-        ? {
-            email,
-            password,
-          }
-        : {
-            email,
-          }
-    );
+    axios
+      .post(
+        "https://teamproject.site/app/auth/signup",
+        !isChecked
+          ? {
+              email,
+              password,
+            }
+          : {
+              email,
+            }
+      )
+      .then(() => window.location.reload())
+      .catch((e) => console.error(e));
   };
 
   return (

@@ -106,7 +106,7 @@ const RegisterPopup = () => {
             onClick={() => setRegisterPopup(false)}
           />
           {isError && <div className={styles.error}>Ошибка</div>}
-          {isSuccess && <div className={styles.success}>Успешно</div>}
+          {isSuccess && <div className={styles.successs}>Успешно</div>}
 
           <h2 className={styles.title}>Добро пожаловать,</h2>
           <div className={styles.subtitle}>Укажите вашу почту</div>

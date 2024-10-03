@@ -94,6 +94,7 @@ const LoginPopup = () => {
       email: email,
       password: password,
     }).then(({ ok, error }) => {
+      console.log(ok, error);
       if (ok) {
         // window.location.reload();
       } else {

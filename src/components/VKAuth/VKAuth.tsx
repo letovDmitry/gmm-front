@@ -4,6 +4,7 @@ import type {
 } from "next";
 import { getCsrfToken, signIn } from "next-auth/react";
 import VkIcon from "../../../public/auth/vk.svg";
+import styles from "./vk.module.scss";
 
 export default function VkAuth({
   csrfToken,
@@ -16,7 +17,7 @@ export default function VkAuth({
         name="callbackUrl"
         value="https://teamproject.site/api/auth/callback/vk"
       />
-      <button onClick={() => signIn("vk")}>
+      <button className={styles.socialBtn} onClick={() => signIn("vk")}>
         <VkIcon width={26} height={15} />
       </button>
     </form>

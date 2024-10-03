@@ -1,0 +1,13 @@
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background-color: #eef5ff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #dbeaff;
+  }
+}

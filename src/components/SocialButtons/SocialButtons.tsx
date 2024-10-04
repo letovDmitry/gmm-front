@@ -85,14 +85,14 @@ const SocialButtons = memo(() => {
         "iframe[src*='oauth.telegram.org']"
       ) as HTMLIFrameElement;
       if (iframe) {
-        console.log(iframe.contentWindow?.document);
+        console.log(iframe);
         setIframeElement(iframe); // Сохраняем найденный iframe в состоянии
         clearInterval(intervalId); // Останавливаем интервал после нахождения iframe
       }
     };
 
     // Запускаем интервал для поиска iframe каждые 100 мс
-    const intervalId = setTimeout(findIframe, 5000);
+    const intervalId = setInterval(findIframe, 100);
 
     return () => {
       clearInterval(intervalId); // Очищаем интервал при размонтировании компонента

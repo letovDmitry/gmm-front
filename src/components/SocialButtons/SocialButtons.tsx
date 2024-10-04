@@ -98,9 +98,7 @@ const SocialButtons = memo(() => {
 
   const handleVkIconClick = () => {
     if (iframeElement) {
-      // Здесь вместо прямого клика по iframe мы можем вызвать событие или действия, если это поддерживается
-      iframeElement.contentWindow?.focus(); // Сфокусируем iframe (если нужно)
-      iframeElement.click(); // Программно кликаем на iframe
+      iframeElement.click(); // Сымитировать клик по iframe
     }
   };
 

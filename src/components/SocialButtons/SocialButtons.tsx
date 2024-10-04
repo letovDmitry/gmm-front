@@ -77,47 +77,33 @@ const SocialButtons = memo(() => {
   const [iframeElement, setIframeElement] = useState<HTMLIFrameElement | null>(
     null
   );
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Функция для поиска iframe
     const findIframe = () => {
       const iframe = document.querySelector(
         "iframe[src*='oauth.telegram.org']"
       ) as HTMLIFrameElement;
       if (iframe) {
-        console.log(iframe);
-        setIframeElement(iframe); // Сохраняем найденный iframe в состоянии
-        clearInterval(intervalId); // Останавливаем интервал после нахождения iframe
+        setIframeElement(iframe);
+        clearInterval(intervalId);
       }
     };
 
-    // Запускаем интервал для поиска iframe каждые 100 мс
     const intervalId = setInterval(findIframe, 100);
-
     return () => {
-      clearInterval(intervalId); // Очищаем интервал при размонтировании компонента
+      clearInterval(intervalId);
     };
   }, []);
 
-  // Функция для обработки клика по VkIcon
   const handleVkIconClick = () => {
-    console.log("click");
     if (iframeElement) {
-      console.log("click1", iframeElement);
-      iframeElement.click();
-      const iframeDocument = iframeElement.contentWindow?.document;
-      console.log(iframeDocument);
-      if (iframeDocument) {
-        console.log("click2");
-        const buttonInsideIframe = iframeDocument.querySelector("button"); // Найдем кнопку в iframe (или другой элемент)
-        console.log(buttonInsideIframe);
-        buttonInsideIframe?.click(); // Выполним клик на кнопке в iframe
-      }
+      iframeElement.click(); // Сымитировать клик по iframe
     }
   };
 
   return (
-    <>
+    <div ref={containerRef} className={styles.container}>
       <VkAuth />
       <div onClick={handleVkIconClick} className={styles.socialBtn}>
         <VkIcon width={36} height={25} />
@@ -134,7 +120,7 @@ const SocialButtons = memo(() => {
           lang="en"
         />
       </div>
-    </>
+    </div>
   );
 });
 

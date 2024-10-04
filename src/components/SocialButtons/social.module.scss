@@ -1,0 +1,17 @@
+.socialBtn {
+  //   position: absolute;
+  //   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background-color: #eef5ff;
+  z-index: 100;
+  //   left: 165px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #dbeaff;
+  }
+}

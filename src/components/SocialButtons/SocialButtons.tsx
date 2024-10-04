@@ -92,7 +92,7 @@ const SocialButtons = memo(() => {
     };
 
     // Запускаем интервал для поиска iframe каждые 100 мс
-    const intervalId = setInterval(findIframe, 100);
+    const intervalId = setTimeout(findIframe, 5000);
 
     return () => {
       clearInterval(intervalId); // Очищаем интервал при размонтировании компонента

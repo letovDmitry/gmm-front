@@ -114,7 +114,7 @@ const SocialButtons = memo(() => {
         onAuthCallback={(data) => {
           signIn("telegram-login", { callbackUrl: "/profile" }, data as any);
         }}
-        buttonSize="small" // "large" | "medium" | "small"
+        buttonSize="large" // "large" | "medium" | "small"
         cornerRadius={20} // 0 - 20
         showAvatar={false} // true | false
         lang="en"

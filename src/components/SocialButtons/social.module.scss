@@ -1,27 +1,31 @@
 /* SocialButtons.module.css */
 .container {
+  display: flex;
   position: relative;
   width: 200px; /* Ширина контейнера */
   height: 50px; /* Высота контейнера */
 }
 
 .socialBtn {
-  position: absolute;
-  top: 0;
-  left: 100px;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  z-index: 2; /* Кнопка поверх iframe */
-  border: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  margin-left: 17px;
+  background-color: #eef5ff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #dbeaff;
+  }
 }
 
 .container iframe {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 80px;
+  width: 59px;
   height: 100%;
   opacity: 0; /* Скрываем iframe */
   z-index: 1; /* iframe ниже кнопки */

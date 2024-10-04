@@ -25,8 +25,8 @@
   position: absolute;
   top: 5px;
   left: 80px;
-  width: 59px;
-  height: 100%;
+  width: 59px !important;
+  height: 59px !important;
   opacity: 0; /* Скрываем iframe */
   z-index: 1; /* iframe ниже кнопки */
   pointer-events: all; /* Обеспечивает передачу кликов iframe */

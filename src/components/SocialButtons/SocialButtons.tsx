@@ -30,21 +30,30 @@ export function LoginButton(props: any) {
     // Save siblings before unmount
     const siblings = hiddenDivRef.current?.parentElement?.children || [];
 
-    const intervalId = setInterval(() => {
-      const iframe = document.querySelector(
-        "iframe[src*='oauth.telegram.org']"
-      ) as HTMLIFrameElement;
-      if (iframe) {
-        iframeRef.current = iframe; // Сохраняем iframe в ref
-        clearInterval(intervalId); // Останавливаем поиск после нахождения
-        if (props.onIframeReady) {
-          props.onIframeReady(iframe); // Сообщаем, что iframe готов
-        }
-      }
-    }, 100);
+    let intervalId: number | null = null; // Для хранения ID интервала
+
+    // Найдем iframe после создания скрипта
+    // const findIframe = () => {
+    //   const iframe = document.querySelector(
+    //     "iframe[src*='oauth.telegram.org']"
+    //   ) as HTMLIFrameElement;
+    //   if (iframe) {
+    //     iframeRef.current = iframe; // Сохраняем iframe в ref
+    //     if (props.onIframeReady) {
+    //       props.onIframeReady(iframe); // Сообщаем, что iframe готов
+    //     }
+    //     if (intervalId) {
+    //       clearInterval(intervalId); // Останавливаем интервал
+    //     }
+    //   }
+    // };
+
+    // intervalId = window.setInterval(findIframe, 100);
 
     return () => {
-      clearInterval(intervalId);
+      //   if (intervalId) {
+      //     clearInterval(intervalId); // Остановка интервала при размонтировании компонента
+      //   }
       // destroy the script element on unmount
       scriptRef.current?.remove();
 
@@ -67,23 +76,44 @@ export function LoginButton(props: any) {
 const SocialButtons = memo(() => {
   const [iframeElement, setIframeElement] = useState<HTMLIFrameElement | null>(
     null
-  ); // Храним iframe
+  );
+
+  useEffect(() => {
+    // Функция для поиска iframe
+    const findIframe = () => {
+      const iframe = document.querySelector(
+        "iframe[src*='oauth.telegram.org']"
+      ) as HTMLIFrameElement;
+      if (iframe) {
+        setIframeElement(iframe); // Сохраняем найденный iframe в состоянии
+        clearInterval(intervalId); // Останавливаем интервал после нахождения iframe
+      }
+    };
+
+    // Запускаем интервал для поиска iframe каждые 100 мс
+    const intervalId = setInterval(findIframe, 100);
+
+    return () => {
+      clearInterval(intervalId); // Очищаем интервал при размонтировании компонента
+    };
+  }, []);
 
   // Функция для обработки клика по VkIcon
   const handleVkIconClick = () => {
     console.log("click");
     if (iframeElement) {
-      // Здесь можно взаимодействовать с iframe
-      // Например, если нужно вызвать клик в iframe:
-      console.log("click 2");
+      console.log("click1", iframeElement);
       const iframeDocument = iframeElement.contentWindow?.document;
+      console.log(iframeDocument);
       if (iframeDocument) {
-        console.log("click got");
+        console.log("click2");
         const buttonInsideIframe = iframeDocument.querySelector("button"); // Найдем кнопку в iframe (или другой элемент)
+        console.log(buttonInsideIframe);
         buttonInsideIframe?.click(); // Выполним клик на кнопке в iframe
       }
     }
   };
+
   return (
     <>
       <VkAuth />
@@ -92,7 +122,6 @@ const SocialButtons = memo(() => {
       </div>
       <div style={{ display: "none" }}>
         <LoginButton
-          onIframeReady={setIframeElement}
           botUsername={"sadjxjcvjxzucvu_bot"}
           onAuthCallback={(data) => {
             signIn("telegram-login", { callbackUrl: "/profile" }, data as any);

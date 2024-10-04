@@ -103,6 +103,7 @@ const SocialButtons = memo(() => {
     console.log("click");
     if (iframeElement) {
       console.log("click1", iframeElement);
+      iframeElement.click();
       const iframeDocument = iframeElement.contentWindow?.document;
       console.log(iframeDocument);
       if (iframeDocument) {

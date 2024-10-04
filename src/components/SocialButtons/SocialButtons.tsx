@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import VkAuth from "../VKAuth/VKAuth";
 import { signIn } from "next-auth/react";
 import styles from "./social.module.scss";
@@ -46,15 +46,28 @@ export function LoginButton(props: any) {
     };
   }, [props]);
 
+  useEffect(() => {
+    if (props.onReady) {
+      props.onReady(() => {
+        hiddenDivRef.current?.click();
+        console.log("1");
+      });
+    }
+  }, [props]);
+
   return <div ref={hiddenDivRef} hidden />;
 }
 
 const SocialButtons = memo(() => {
-  const loginButtonRef = useRef<HTMLDivElement>(null); // Создаем ref для скрытого LoginButton
+  const [triggerLoginButtonClick, setTriggerLoginButtonClick] =
+    useState<() => void | null>();
 
-  // Функция для передачи клика на скрытый LoginButton
+  // Функция для передачи клика на скрытый элемент через hiddenDivRef
   const handleVkIconClick = () => {
-    loginButtonRef.current?.click(); // Имитируем клик на скрытую кнопку
+    console.log("click");
+    if (triggerLoginButtonClick) {
+      triggerLoginButtonClick(); // Вызываем клик на hiddenDivRef через переданную функцию
+    }
   };
   return (
     <>
@@ -64,7 +77,7 @@ const SocialButtons = memo(() => {
       </div>
       <div style={{ display: "none" }}>
         <LoginButton
-          ref={loginButtonRef}
+          onReady={setTriggerLoginButtonClick}
           botUsername={"sadjxjcvjxzucvu_bot"}
           onAuthCallback={(data) => {
             signIn("telegram-login", { callbackUrl: "/profile" }, data as any);

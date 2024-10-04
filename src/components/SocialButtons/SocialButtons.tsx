@@ -12,6 +12,7 @@ function initTelegramAuthLogin(options: TTelegramAuthLogin) {
 export function LoginButton(props: any) {
   const hiddenDivRef = useRef<HTMLDivElement>(null);
   const scriptRef = useRef<HTMLScriptElement>();
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
     // destroy the existing script element
@@ -29,7 +30,21 @@ export function LoginButton(props: any) {
     // Save siblings before unmount
     const siblings = hiddenDivRef.current?.parentElement?.children || [];
 
+    const intervalId = setInterval(() => {
+      const iframe = document.querySelector(
+        "iframe[src*='oauth.telegram.org']"
+      ) as HTMLIFrameElement;
+      if (iframe) {
+        iframeRef.current = iframe; // Сохраняем iframe в ref
+        clearInterval(intervalId); // Останавливаем поиск после нахождения
+        if (props.onIframeReady) {
+          props.onIframeReady(iframe); // Сообщаем, что iframe готов
+        }
+      }
+    }, 100);
+
     return () => {
+      clearInterval(intervalId);
       // destroy the script element on unmount
       scriptRef.current?.remove();
 
@@ -46,27 +61,27 @@ export function LoginButton(props: any) {
     };
   }, [props]);
 
-  useEffect(() => {
-    if (props.onReady) {
-      props.onReady(() => {
-        hiddenDivRef.current?.click();
-        console.log("1");
-      });
-    }
-  }, [props]);
-
   return <div ref={hiddenDivRef} hidden />;
 }
 
 const SocialButtons = memo(() => {
-  const [triggerLoginButtonClick, setTriggerLoginButtonClick] =
-    useState<() => void | null>();
+  const [iframeElement, setIframeElement] = useState<HTMLIFrameElement | null>(
+    null
+  ); // Храним iframe
 
-  // Функция для передачи клика на скрытый элемент через hiddenDivRef
+  // Функция для обработки клика по VkIcon
   const handleVkIconClick = () => {
     console.log("click");
-    if (triggerLoginButtonClick) {
-      triggerLoginButtonClick(); // Вызываем клик на hiddenDivRef через переданную функцию
+    if (iframeElement) {
+      // Здесь можно взаимодействовать с iframe
+      // Например, если нужно вызвать клик в iframe:
+      console.log("click 2");
+      const iframeDocument = iframeElement.contentWindow?.document;
+      if (iframeDocument) {
+        console.log("click got");
+        const buttonInsideIframe = iframeDocument.querySelector("button"); // Найдем кнопку в iframe (или другой элемент)
+        buttonInsideIframe?.click(); // Выполним клик на кнопке в iframe
+      }
     }
   };
   return (
@@ -77,7 +92,7 @@ const SocialButtons = memo(() => {
       </div>
       <div style={{ display: "none" }}>
         <LoginButton
-          onReady={setTriggerLoginButtonClick}
+          onIframeReady={setIframeElement}
           botUsername={"sadjxjcvjxzucvu_bot"}
           onAuthCallback={(data) => {
             signIn("telegram-login", { callbackUrl: "/profile" }, data as any);

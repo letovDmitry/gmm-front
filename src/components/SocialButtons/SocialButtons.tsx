@@ -108,18 +108,18 @@ const SocialButtons = memo(() => {
       <div onClick={handleVkIconClick} className={styles.socialBtn}>
         <VkIcon width={36} height={25} />
       </div>
-      <div style={{ display: "none" }}>
-        <LoginButton
-          botUsername={"sadjxjcvjxzucvu_bot"}
-          onAuthCallback={(data) => {
-            signIn("telegram-login", { callbackUrl: "/profile" }, data as any);
-          }}
-          buttonSize="small" // "large" | "medium" | "small"
-          cornerRadius={20} // 0 - 20
-          showAvatar={false} // true | false
-          lang="en"
-        />
-      </div>
+      {/* <div style={{ display: "none" }}> */}
+      <LoginButton
+        botUsername={"sadjxjcvjxzucvu_bot"}
+        onAuthCallback={(data) => {
+          signIn("telegram-login", { callbackUrl: "/profile" }, data as any);
+        }}
+        buttonSize="small" // "large" | "medium" | "small"
+        cornerRadius={20} // 0 - 20
+        showAvatar={false} // true | false
+        lang="en"
+      />
+      {/* </div> */}
     </div>
   );
 });

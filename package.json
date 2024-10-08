@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@jfkz/tinkoff-payment-sdk": "^1.4.1",
     "@ramonak/react-progress-bar": "^5.2.0",
     "@telegram-auth/react": "^1.0.4",
     "@telegram-auth/server": "^1.0.4",
